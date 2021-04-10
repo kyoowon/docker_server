@@ -15,15 +15,11 @@ server {
 	ssl_certificate_key /etc/ssl/private/localhost.dev.key;
 
 	# Set root dir of server
-	root /var/www/html;
-
-	# Autoindex
-	index index.html index.htm index.php #index.ngiinx-debian.html;
+	root /var/www/html/index.ngiinx-debian.html;
 
 	server_name ft_server;
 
 	location / {
-		autoindex on;
 		try_files $uri $uri/ =404;
 	}
 
