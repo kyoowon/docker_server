@@ -9,7 +9,7 @@ openssl req -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=KR/ST=Seoul/L=Seou
 mv localhost.dev.key ../../etc/ssl/private/
 mv localhost.dev.crt ../../etc/ssl/certs/
 
-# ssl 권한설정.
+# ssl에 대한 접근 권한설정.
 chmod 600 ../../etc/ssl/certs/localhost.dev.crt ../../etc/ssl/private/localhost.dev.key
 
 # nginx 설정.
@@ -31,10 +31,6 @@ chown -R www-data:www-data ../../var/www/html/wordpress
 # wp-config.php 파일 수정.
 cp -rp my-wp-config.php ../../var/www/html/wordpress/wp-config.php
 
-# mysql wordpress 테이블 및 권한 생성.
-service mysql start
-mysql -u root --skip-password < create_wordpress.sql
-
 # phpmyadmin 설치.
 # wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
 tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz
@@ -43,6 +39,12 @@ mv phpmyadmin ../../var/www/html/
 
 # phpmyadmin - mysql 접근을 위한 설정.
 cp -rp my-config.inc.php ../../var/www/html/phpmyadmin/config.inc.php 
+
+# mysql wordpress & phpmyadmin 테이블 및 권한 생성.
+# phpmyadmin - mysql로 리다이렉션 시킴.
+service mysql start
+mysql -u root --skip-password < ../../var/www/html/phpmyadmin/sql/create_tables.sql
+mysql -u root --skip-password < create_wordpress.sql
 
 # 유저 그룹 권한설정. - phpmyadmin
 chown -R www-data:www-data ../../var/www/html/phpmyadmin/
@@ -59,7 +61,10 @@ service nginx start
 service php7.3-fpm start
 
 # while 통해 컨테이너가 종료되지 않고 포그라운드 방식으로 계속 남아 있을 수 있도록 함.
+# 프로세스가 실행되는 동안 명령 프롬프트상에서 아무것도 할 수 없음.
 while :
 do
         sleep 100
 done
+# 만약 컨테이너를 터미널로 접근이 필요한 경우 bash를 활용
+# bash

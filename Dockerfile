@@ -40,7 +40,7 @@ CMD     bash init.sh
 # dockerfile로 빌드 (파일이 위치한 곳에서 다음 명령어 실행)
 # - docker build -t ft_server .
 # docker run
-# - docker run -p 80:80 -p 443:443 ft_server
+# - docker run [--name test] -p 80:80 -p 443:443 [ -e NOTAUTOINDEX = 1] ft_server
 
 # docker 컨테이너 삭제
 # - docker rm test
@@ -48,6 +48,6 @@ CMD     bash init.sh
 # - docker stop $(docker ps -aq)
 # - docker system prune -a
 # process 찾기 (포트번호를 넣으면 해당 포트에 PID를 알 수 있음)
-# lsof -i :포트번호
+# - lsof -i :포트번호
 # 포트를 점유하고 있는 process kill
-# kill -9 [PID]
+# - kill -9 [PID]
