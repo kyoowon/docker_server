@@ -1,13 +1,13 @@
 server {
 	listen 80;
 	listen [::]:80;
-	
+
 	return 301 https://$host$request_uri;
 }
 
 server {
 	listen 443 ssl;
-	listen [::]:442 ssl;
+	listen [::]:443 ssl;
 
 	# ssl setting
 	ssl on;
@@ -15,7 +15,9 @@ server {
 	ssl_certificate_key /etc/ssl/private/localhost.dev.key;
 
 	# Set root dir of server
-	root /var/www/html/index.ngiinx-debian.html;
+	root /var/www/html/;
+
+	index index.html index.htm index.php;
 
 	server_name ft_server;
 

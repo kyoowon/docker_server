@@ -7,7 +7,7 @@ server {
 
 server {
 	listen 443 ssl;
-	listen [::]:442 ssl;
+	listen [::]:443 ssl;
 
 	# ssl setting
 	ssl on;
@@ -18,7 +18,7 @@ server {
 	root /var/www/html;
 
 	# Autoindex
-	index index.html index.htm index.php #index.ngiinx-debian.html;
+	index index.html index.htm index.php;
 
 	server_name ft_server;
 

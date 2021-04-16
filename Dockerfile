@@ -11,14 +11,12 @@ RUN		apt-get update
 RUN     apt-get -y install \
 	    nginx \
 	    openssl \
-	    php7.3-fpm
-
-RUN		apt-get -y install \
+	    php7.3-fpm \
 		mariadb-server \
 		php-mysql \
 		php-mbstring
 
-# wget를 이용한 파일 다운시 필요(phpmyadmin & wordpress) 빠른 실행을 위해 소스를 미리 다운.
+# wget를 이용한 파일 다운시 필요(phpmyadmin & wordpress) - 빠른 실행을 위해 소스를 미리 다운.
 # RUN	    apt-get -y install wget \
 # 			vim
 
@@ -34,20 +32,3 @@ WORKDIR /tmp/srcs/
 
 # WORKDIR에서 지정한 디렉토리에 있는 init.sh를 실행.
 CMD     bash init.sh
-
-
-
-# dockerfile로 빌드 (파일이 위치한 곳에서 다음 명령어 실행)
-# - docker build -t ft_server .
-# docker run
-# - docker run [--name test] -p 80:80 -p 443:443 [ -e NOTAUTOINDEX = 1] ft_server
-
-# docker 컨테이너 삭제
-# - docker rm test
-# docker에 실행 중인 컨테이너 중지, 컨테이너와 이미지 모두 삭제
-# - docker stop $(docker ps -aq)
-# - docker system prune -a
-# process 찾기 (포트번호를 넣으면 해당 포트에 PID를 알 수 있음)
-# - lsof -i :포트번호
-# 포트를 점유하고 있는 process kill
-# - kill -9 [PID]
