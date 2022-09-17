@@ -25,8 +25,6 @@
 - URL에 따라 서버가 올바른 웹 사이트로 리디렉션되는지 확인해야합니다.
 - 서버가 오토 인덱스로 실행 중인지 확인하고, 이를 비활성화 할 수 있어야합니다.
 
-[https://yeosong1.github.io/ft_server.html](https://yeosong1.github.io/ft_server.html)
-
 # 1. Docker
 
 Docker는 **리눅스 기반의 컨테이너**를 생성하여 **매우 가벼운 모듈식 가상 머신처럼 다룰 수 있습니다.** 또한 컨테이너를 구축, 배포, 복사하고 한 환경에서 다른 환경으로 이동하는 등 유연하게 사용할 수 있어, 애플리케이션을 클라우드에 최적화하도록 지원한다.
@@ -37,29 +35,19 @@ Docker는 **리눅스 기반의 컨테이너**를 생성하여 **매우 가벼�
 
 그리고 같은 개발 툴 기반으로 개발을 진행하고 다른 버전을 접근 한다고 하면 분명 충돌이 일어날 것이다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ea1ac06-5de3-4e3e-b2f3-df217e8e609b/_2021-04-08__3.37.10.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ea1ac06-5de3-4e3e-b2f3-df217e8e609b/_2021-04-08__3.37.10.png)
-
 이러한 충돌을 방지하고 각각의 서비스 환경을 조성할 수 있도록 담는 그릇을 만드는 것이 Docker이 할 일이다.
 
 ## 2). Docker와 VM가 어떤 차이
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ce06ca1a-7c1a-45b0-965c-9be84a75851c/_2021-04-08__3.36.31.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ce06ca1a-7c1a-45b0-965c-9be84a75851c/_2021-04-08__3.36.31.png)
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bd8da798-e622-4797-8b4a-9344606e2268/_2021-04-08__3.36.48.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bd8da798-e622-4797-8b4a-9344606e2268/_2021-04-08__3.36.48.png)
-
   위에 그림과 같이 VM은 집 안에 새로운 집을 짓는 것과 같다. 컴퓨터의 자원을 쪼개서 제한된 자원안에 서비스를 할 수 있도록 제한하는 것이며 또한 각각의 서비스에 OS가 깔리기 때문에 서비스에 필요한 OS의 기능 외에도 자원을 차지할 수 있게 된다.
 
   이와 대조적으로 Docker는 컨테이너라는 서비스마다의 공간을 할당해 서비스끼리 필요한 컴퓨터 자원은 공유하고 페키지 버전과 같은 것은 확실하게 분리함으로써 컴퓨터 자원을 보다 효율적으로 사용할 수 있도록 한다.
-
-참고 [https://www.youtube.com/watch?v=hWPv9LMlme8&t=149s](https://www.youtube.com/watch?v=hWPv9LMlme8&t=149s)
 
 # 2. Docker install - Docker M1 mac Preview
 
 현재 사용하고 있는 노트북이 실리콘 맥북 에어인 것을 감안해 Docker M1 mac Preview 버전을 다운 받아 진행하였다.
 
 설치 링크
-
-[https://docs.docker.com/docker-for-mac/apple-m1/](https://docs.docker.com/docker-for-mac/apple-m1/)
 
 # 3. Docker 실행
 
@@ -160,8 +148,6 @@ docker exec <컨테이너 이름 혹은 아이디> <하고자하는 명령어>
 docker pull debian:buster
 ```
 
-참고 : [https://hub.docker.com/_/debian](https://hub.docker.com/_/debian)
-
 > 왜 나는 docker run 이 안되는 거지?
 
 ```docker
@@ -184,15 +170,11 @@ sudo apachectl stop
 
 그 해결은 위와 같이 아파치를 stop 해두고 계속 진행하면 된다.
 
-[https://stackoverflow.com/questions/26585116/the-port-80-in-mac-is-used](https://stackoverflow.com/questions/26585116/the-port-80-in-mac-is-used)
-
 # 5. Nginx 설치
 
 엔진엑스(Nginx)는 Igor Sysoev라는 러시아 개발자가 `동시접속 처리에 특화된` 웹 서버 프로그램이다. `Apache`보다 동작이 단순하고, 전달자 역할만 하기 때문에 동시접속 처리에 특화되어 있다.
 
 동시접속자(약 700명) 이상이라면 서버를 증설하거나 Nginx 환경을 권장한다고 한다. 지금은 아파치가 시장 점유율이 압도적이지만, 아마존웹서비스(AWS) 상에서는 시장 점유율 44%에 달할정도로 가볍고, 성능이 좋은 엔진이라고 한다.
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/96aa62e5-cee2-4f56-ac48-f99cd88fa15f/Zpw9D7x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/96aa62e5-cee2-4f56-ac48-f99cd88fa15f/Zpw9D7x.png)
 
 ### **HTTP 프록시와 웹 서버 기능**
 
@@ -541,8 +523,6 @@ mysql < var/www/html/phpmyadmin/sql/create_tables.sql
 ### phpMyAdmin blowfish
 
 phpMyAdmin을 업로드 하고 로그인 했을 때 다음과 같은 문구가 나오는 경우가 있습니다.
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f494165d-57bf-4a6b-8a4d-2c9884bf7e55/phpMyAdmin-01.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f494165d-57bf-4a6b-8a4d-2c9884bf7e55/phpMyAdmin-01.png)
 
 **blowfish** : 1993년 브루스 슈나이어가 설계한 키(key) 방식의 대칭형 블록 암호이다. 64비트 블록 크기, 또 32비트에서 최대 448비트에 이르는 가변 키 길이를 갖추고 있다.
 
